@@ -1,0 +1,58 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Schedule a Counselor</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+<form [formGroup]="bookForm" (ngSubmit)="onFormSubmit(bookForm.value)">
+ 
+    <label for="counselor">Counselor's Name</label>&nbsp;&nbsp;
+<!--	<input type="text" placeholder="Counselor's Name" formControlName="counselor" errorStateMatcher="matcher">  -->
+   
+<!--        <select [(ngModel)]="selectedCategory" class="form-control"> -->
+        <select formControlName="counselor" name="test" class="form-control">
+
+                <option disabled>--Select--</option>
+                <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+         </select>
+<br>
+    <label for="sdate">Start Date/Time</label>&nbsp;&nbsp;
+	<input type="datetime-local" placeholder="Start Date/Time" formControlName="start_date" >	
+<br>      
+    <label for="edate">End Date/Time</label>&nbsp;&nbsp;
+	<input type="datetime-local" placeholder="End Date/Time" formControlName="end_date" >
+<br>
+
+<!--
+    <div class="button-row">
+     <button type="submit" mat-fab color="primary"><mat-icon>save</mat-icon></button>
+    </div>
+  -->
+  
+</form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="closeBtn2" class="btn btn-light" (click)="onFormSubmit(bookForm.value,content)">Save</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">+Schedule New Counselor</button>
+
+
+<div #scheduler_here class="dhx_cal_container" style="width: 100%; height:100vh">
+
+   <div class="dhx_cal_navline">
+       <div class="dhx_cal_prev_button">&nbsp;</div>
+       <div class="dhx_cal_next_button">&nbsp;</div>
+       <div class="dhx_cal_today_button"></div>
+       <div class="dhx_cal_date"></div>
+       <div class="dhx_cal_tab" name="day_tab"></div>
+       <div class="dhx_cal_tab" name="week_tab"></div>
+       <div class="dhx_cal_tab" name="month_tab"></div>
+   </div>
+   <div class="dhx_cal_header"></div>
+   <div class="dhx_cal_data"></div>
+</div>

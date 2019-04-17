@@ -1,0 +1,20 @@
+
+<form [formGroup]="bookForm" (ngSubmit)="onFormSubmit(bookForm.value)">
+  
+   
+    <label for="counselor">Counselor's Name</label>&nbsp;&nbsp;
+	<input type="text" placeholder="Counselor's Name" formControlName="counselor" errorStateMatcher="matcher">
+	
+    
+ <br>
+  
+ 
+    <label for="cellnum">Cell # (XXX-XXX-XXXX)</label>&nbsp;&nbsp;
+	<input type="text" placeholder="Cell #" formControlName="cellnum" >
+	
+	
+<br>
+     <div class="button-row">
+    <button type="submit" mat-fab color="primary">Save</button>
+  </div>
+</form>

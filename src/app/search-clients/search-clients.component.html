@@ -1,0 +1,24 @@
+
+<form [formGroup]="bookForm" (ngSubmit)="onFormSubmit(bookForm.value)">
+  
+   
+    <label for="counselor">Search Client's Number XXX-XXX-XXXX</label>&nbsp;&nbsp;
+	<input type="text" placeholder="Client's Number" formControlName="counselor" errorStateMatcher="matcher">
+	
+    
+ <br>
+  
+ 
+  
+<br>
+     <div class="button-row">
+    <button type="submit" mat-fab color="primary">Search</button>
+  </div>
+</form>
+
+<br><br>
+
+<div *ngFor="let category of categories">
+ {{category}} <br>
+</div>
+ 

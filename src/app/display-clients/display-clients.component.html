@@ -1,0 +1,26 @@
+
+<br><br>
+<a href="/search-clients"><-- Back</a>
+<br>
+<br>
+<br>
+<div align="center">Client:  {{client}}</div>
+<br>
+<br>
+
+
+<div align="center">
+
+<table border="1" cellpadding="2" cellspacing="5">
+<tr><td>Counselor on Call</td><td>Message</td><td>Message Date</td><td>Sender</td></tr>
+    <ng-container *ngFor="let row of categories2; let i = index">
+        <tr>
+            <ng-container *ngFor="let col of row; let j = index">
+                <td>{{col}}</td>
+            </ng-container>
+        </tr> 
+    </ng-container>
+</table>
+
+
+</div>

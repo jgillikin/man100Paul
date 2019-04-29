@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { ENV } from './env.config';
 import { EventModel } from './models/event.model';
 import { Event } from './models/events';
+import { LoginResultModel } from './models/LoginResultModel';
 import { RsvpModel } from './models/rsvp.model';
 import { HandleError } from './service-helper';
 import { map } from 'rxjs/operators';
@@ -92,7 +93,7 @@ getCurrentCounselors(): Observable<Event[]> {
        params = params.append("clientSearch", user);
   
   
-    return this.http.get('https://steadfast-quotation.glitch.me/api/getClientSearch/'+user, params)
+    return this.http.get('https://steadfast-quotation.glitch.me/api/getClientSearch/'+user)
 	        .pipe(
 			  catchError((error) => this._handleError(error))
              );	
@@ -133,6 +134,13 @@ getCurrentCounselors(): Observable<Event[]> {
 			  map(res => res ) 
              );			  
   }
+
+login(email: string, password: string): Observable<LoginResultModel>{
+    return this.http.post<LoginResultModel>('https://steadfast-quotation.glitch.me/api/login', {
+      email: email,
+      password: password
+    });
+}
   
   editUser(ev:string) {
 	  
@@ -228,16 +236,6 @@ deleteEvent$(id){
       );
   }
 
-  // DELETE existing event and all associated RSVPs (admin only)
-  /*deleteEvent$(id: string): Observable<any> {
-    return this.http
-      .delete(`${ENV.BASE_API}event/${id}`, {
-        headers: new HttpHeaders().set('Authorization', this._authHeader)
-      })
-      .pipe(
-        catchError((error) => this._handleError(error))
-      );
-  }*/
 
   private _handleError(err: HttpErrorResponse | any): Observable<any> {
     const errorMsg = err.message || 'Error: Unable to complete request.';

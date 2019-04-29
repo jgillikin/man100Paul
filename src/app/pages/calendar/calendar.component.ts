@@ -39,7 +39,7 @@ export class CalendarComponent implements OnInit {
   bookForm: FormGroup;
   errorMessage: String;
   ev2;
-  jsonData;
+  //jsonData;
   categories = [];
   categories2 = [];
   categories3 = [];
@@ -70,7 +70,7 @@ export class CalendarComponent implements OnInit {
 		
         scheduler.config.xml_date = '%Y-%m-%d %H:%i';
 
-        //scheduler.init(this.schedulerContainer.nativeElement, new Date(2017, 8, 1));
+        
         scheduler.init(this.schedulerContainer.nativeElement, new Date());
 		
 		/*
@@ -134,8 +134,6 @@ export class CalendarComponent implements OnInit {
 	
 	    this.api.getCurrentCounselors().subscribe(data2 => { 
 		
-		  //console.log(data2); 
-		  
 		  //console.log(data2[0].counselor); 
 		  
 		for (var i=0;i<data2.length;i++) {
@@ -146,7 +144,6 @@ export class CalendarComponent implements OnInit {
 		
 		});
      
-			
 			
     }
 	
@@ -189,7 +186,7 @@ export class CalendarComponent implements OnInit {
     });
   }
   
-  onFormSubmit(form: NgForm,content) {
+  onFormSubmit(form: any,content) {
 	//console.log('call postEventMan ');
 	
 	var idsel = document.forms[0].elements["test"].selectedIndex 
@@ -216,15 +213,15 @@ export class CalendarComponent implements OnInit {
         response => { 
 		 console.log('in response');    
 		 this.api.getEvents4().subscribe(data => { 
-		  scheduler.parse(data, 'json'); }); //window.location.reload();
-		},
-        err => console.log(err);		
+		  scheduler.parse(data, 'json'); }); 
+		}
+		//,err => console.log('error');		
       ); 
 	  
 	  	  this.modalRef.close();
 	 
 	  }
-	  
+	   
 	  
     private serializeEvent(data: any, insert: boolean = false): Event {
         const result = {};

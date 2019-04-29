@@ -30,6 +30,15 @@ export class AuthService {
     if (JSON.parse(localStorage.getItem('expires_at')) > Date.now()) {
       this.renewToken();
     }
+	
+	if (localStorage.getItem("TOKEN") != null) {
+		this.loggedIn = true;
+		console.log('logged in from auth service ts');
+    }
+	else {
+	    console.log('not logged in from auth service ts');
+	}
+	
   }
 
   setLoggedIn(value: boolean) {
@@ -39,8 +48,13 @@ export class AuthService {
   }
 
   login() {
-    // Auth0 authorize request
-    this._auth0.authorize();
+    console.log('login in auth service ts');
+	if (this.loggedIn)
+	 return true;
+    else 
+     return false;
+ 
+ //   this.router.navigateByUrl('/event-create');
   }
 
   handleAuth() {
@@ -86,12 +100,10 @@ export class AuthService {
 
   logout() {
     // Remove data from localStorage
-    this._clearExpiration();
+	this.loggedIn = false;
+    localStorage.clear();
     // End Auth0 authentication session
-    this._auth0.logout({
-      clientId: AUTH_CONFIG.CLIENT_ID,
-      returnTo: ENV.BASE_URI
-    });
+    this.router.navigateByUrl('login');
   }
 
   get tokenValid(): boolean {

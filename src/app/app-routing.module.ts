@@ -3,11 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { CallbackComponent } from './pages/callback/callback.component';
 import { CounselorsComponent } from './pages/counselors/counselors.component';
-
+import { LoginComponent } from './login/login.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { SearchClientsComponent } from './search-clients/search-clients.component';
 import { DisplayClientsComponent } from './display-clients/display-clients.component';
-
+import {NeedAuthGuard} from './auth.guard';
 //import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 //import { CreateEventComponent } from './pages/admin/create-event/create-event.component';
@@ -16,7 +16,12 @@ import { CalendarComponent } from './pages/calendar/calendar.component';
 const routes: Routes = [
   {
     path: '',
-    component: CalendarComponent
+    component: LoginComponent,
+	canActivate: [NeedAuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'callback',

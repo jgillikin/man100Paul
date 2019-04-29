@@ -10,6 +10,7 @@ import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './pages/callback/callback.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './core/api.service';
+import { CustomerService } from './core/customer.service';
 import { LoadingComponent } from './core/loading.component';
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,7 +44,8 @@ import { ModalService } from './modal/modal.service';
 import { SearchClientsComponent } from './search-clients/search-clients.component';
 import { DisplayClientsComponent } from './display-clients/display-clients.component';
 import { CounselorsComponent } from './pages/counselors/counselors.component';
-
+import { LoginComponent } from './login/login.component';
+import {NeedAuthGuard} from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import { CounselorsComponent } from './pages/counselors/counselors.component';
    ModalComponent,
    SearchClientsComponent,
    DisplayClientsComponent,
-   CounselorsComponent
+   CounselorsComponent,
+   LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,7 @@ import { CounselorsComponent } from './pages/counselors/counselors.component';
 	 NgbModalModule,
     FlatpickrModule.forRoot()
   ],
-  providers: [Title,ModalService,AuthService,ApiService,DatePipe,UtilsService,FilterSortService],
+  providers: [Title,ModalService,AuthService,ApiService,CustomerService,NeedAuthGuard,DatePipe,UtilsService,FilterSortService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

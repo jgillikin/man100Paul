@@ -18,13 +18,13 @@ errorMessage: String;
 categories = [];
 categories2 = [];
 messages: String;
-msg: String;
+msg = [];
 counselors: String;
-couns: String;
+couns = [];
 msgDates: String;
-msgDate: String;
+msgDate = [];
 senders: String;
-sender: String;
+sender = [];
 id: number;
 private sub: any;
 client: String;
@@ -33,31 +33,48 @@ client: String;
 
  this.api.getSearchClients(this.route.snapshot.paramMap.get('id')).subscribe(data2 => { 
 		
+		console.log('data2 lenght is '+data2.length);
 		
 		for (var i=0;i<data2.length;i++) {
-			//console.log('msg is '+data2[i].msg);
+			
+			/*
 			this.messages = data2[i].msg;
 			this.counselors = data2[i].counselor;
 			this.msgDates = data2[i].msgDate;
 			this.senders = data2[i].sender2;
-			//this.categories[i] = data2[i].counselor+ '           '+data2[i].msg;
-			//console.log('msg is '+data2[i].msg(i));
+		*/
+
+		//console.log('messages are '+data2[i].msg);
+		
+this.msg = data2[i].msg.toString().split(',');
+this.couns = data2[i].counselor.toString().split(',');
+this.msgDate = data2[i].msgDate.toString().split(',');
+this.sender = data2[i].sender2.toString().split(',');
+		
+		
 		}
+		
+		console.log('msg size is '+this.msg.length);
 	
 	
 	    this.client = this.route.snapshot.paramMap.get('id');
-		this.msg = this.messages.toString().split(',');
-		this.couns = this.counselors.toString().split(',');
-		this.msgDate = this.msgDates.toString().split(',');
-		this.sender = this.senders.toString().split(',');
-		//console.log('msg length is '+this.msg.length+this.msg[0]);
+
+/*
+		this.msg.push(this.messages.toString().split(','));
+
+		this.couns.push(this.counselors.toString().split(','));
+
+		this.msgDate.push(this.msgDates.toString().split(','));
+
+		this.sender.push(this.senders.toString().split(','));
+*/
 
 		for (var j=0;j<this.couns.length;j++) 
 		{
 			this.categories2.push([this.couns[j],this.msg[j],this.msgDate[j],this.sender[j]]);
 		}
 		
-		console.log('categories2 length is '+this.categories2[0]);
+		console.log('categories2 length is '+this.categories2.length);
 		//this.categories2 = data2;
 		
 		

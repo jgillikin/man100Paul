@@ -89,6 +89,20 @@ module.exports = function(app, config) {
     });
   });
 
+// check Login auth
+  app.get('/', jwtCheck,  (req, res) => {
+    Event.findById(req.params.id, (err, event) => {
+      if (err) {
+        return res.status(500).send({message: err.message});
+      }
+      if (!event) {
+        return res.status(400).send({message: 'Event not found.'});
+      }
+      res.send(event);
+    });
+  });
+
+
 // POST a new event
   app.post('/api/event/new', (req, res) => {
 console.log('in post');

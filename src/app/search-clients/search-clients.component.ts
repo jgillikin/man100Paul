@@ -31,8 +31,8 @@ categories = [];
   
   }
   
-  onFormSubmit(form: NgForm) {
-	console.log('pass to display-clients 'form.counselor);
+  onFormSubmit(form: any) {
+	console.log('pass to display-clients '+form.counselor);
 
 	/*
 	this.api.getSearchClients(form)  

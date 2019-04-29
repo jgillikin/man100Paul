@@ -36,6 +36,9 @@ private extractData(res: Response) {
   return body || { };
 }
 
+
+
+
 getBooks(): Observable<any> {
   return this.http.get(apiUrl, httpOptions).pipe(
     map(this.extractData),

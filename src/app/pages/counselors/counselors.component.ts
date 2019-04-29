@@ -42,8 +42,8 @@ client: String;
 		    else
 			 this.cellnums = data2[i].cellnum;
 		*/
-		this.coun.push(data2[i].counselor;
-		this.cellnum.push(data2[i].cellnum;
+		this.coun.push(data2[i].counselor);
+		this.cellnum.push(data2[i].cellnum);
 		}
 				
 	//this.coun.push(this.couns.toString().split(','));

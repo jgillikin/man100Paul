@@ -6,21 +6,18 @@
 <br>
 <div align="center">Client:  {{client}}</div>
 <br>
-<br>
-
 
 <div align="center">
-
-<table border="1" cellpadding="2" cellspacing="5">
+<table border="1" cellpadding="2" cellspacing="4">
 <tr><td>Counselor on Call</td><td>Message</td><td>Message Date</td><td>Sender</td></tr>
-    <ng-container *ngFor="let row of categories2; let i = index">
-        <tr>
-            <ng-container *ngFor="let col of row; let j = index">
-                <td>{{col}}</td>
-            </ng-container>
-        </tr> 
-    </ng-container>
-</table>
 
+<ng-container *ngFor="let item of test | paginate: { itemsPerPage: 10, currentPage: p}">
+	    <tr><td>{{item.Counselor}}</td><td>{{item.Message}}</td><td>{{item.MessageDate}}</td><td>{{item.Sender}}</td>  </tr>
+</ng-container>	
+ 
+</table>    
 
-</div>
+<br>	
+	  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+	

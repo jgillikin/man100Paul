@@ -4,6 +4,9 @@ import { ApiService } from '../core/api.service';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms'
 import {Event} from '../models/events';
 import { Response } from '@angular/http';
+import {Observable} from 'rxjs'
+import {switchMap, debounceTime} from 'rxjs/operators';
+import {IUserResponse} from '../models/user';
 
 @Component({
   selector: 'app-search-clients',
@@ -12,7 +15,8 @@ import { Response } from '@angular/http';
 })
 export class SearchClientsComponent implements OnInit {
 	
-	bookForm: FormGroup;
+bookForm: FormGroup;
+filteredUsers: Observable<IUserResponse>;
 event1: Event;
 errorMessage: String;
 categories = [];
@@ -28,6 +32,8 @@ categories = [];
 	'lastActiveId' : '',
 	'viewPublic': true
   });
+  
+   
   
   }
   

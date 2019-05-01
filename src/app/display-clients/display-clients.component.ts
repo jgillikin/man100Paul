@@ -5,6 +5,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 import {Event} from '../models/events';
 import { Response } from '@angular/http';
 
+
 @Component({
   selector: 'app-display-clients',
   templateUrl: './display-clients.component.html',
@@ -16,6 +17,7 @@ bookForm: FormGroup;
 event1: Event;
 errorMessage: String;
 categories = [];
+test = [];
 categories2 = [];
 messages: String;
 msg = [];
@@ -29,12 +31,11 @@ id: number;
 private sub: any;
 client: String;
 
+
   constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder,public route: ActivatedRoute) {
 
  this.api.getSearchClients(this.route.snapshot.paramMap.get('id')).subscribe(data2 => { 
-		
-		console.log('data2 lenght is '+data2.length);
-		
+				
 		for (var i=0;i<data2.length;i++) {
 			
 			/*
@@ -45,17 +46,17 @@ client: String;
 		*/
 
 		//console.log('messages are '+data2[i].msg);
+		var d = new Date(data2[i].msgDate[0]);
+		
+		console.log('date format is '+d);
 		
 this.msg = data2[i].msg.toString().split(',');
 this.couns = data2[i].counselor.toString().split(',');
 this.msgDate = data2[i].msgDate.toString().split(',');
 this.sender = data2[i].sender2.toString().split(',');
 		
-		
 		}
 		
-		console.log('msg size is '+this.msg.length);
-	
 	
 	    this.client = this.route.snapshot.paramMap.get('id');
 
@@ -71,13 +72,16 @@ this.sender = data2[i].sender2.toString().split(',');
 
 		for (var j=0;j<this.couns.length;j++) 
 		{
-			this.categories2.push([this.couns[j],this.msg[j],this.msgDate[j],this.sender[j]]);
+			//this.categories2.push([this.couns[j],this.msg[j],this.msgDate[j],this.sender[j]]);
+		   // this.categories2.push(['Counselor:  '+this.couns[j]+'  |  Message:  '+this.msg[j]+'  |  Date:  '+this.msgDate[j]+'  |  Sender:  '+this.sender[j]]);
+			
+			this.test.push(
+			{Counselor: this.couns[j],Message: this.msg[j],MessageDate: this.msgDate[j], Sender: this.sender[j]}
+			);
 		}
 		
-		console.log('categories2 length is '+this.categories2.length);
 		//this.categories2 = data2;
-		
-		
+				
 		});
   
   }

@@ -83,6 +83,15 @@ getCurrentCounselors(): Observable<Event[]> {
       );
   }
   
+  //get list of clientSearch
+  getClients(): Observable<Event[]> {
+    return this.http
+      .get<Event[]>('https://steadfast-quotation.glitch.me/api/getClients')
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+  
    // GET list of counselors
   getSearchClients(user) {
 	  

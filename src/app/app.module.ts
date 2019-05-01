@@ -18,7 +18,7 @@ import { UtilsService } from './core/utils.service';
 import { FilterSortService } from './core/filter-sort.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { CreateEventComponent } from './pages/admin/create-event/create-event.component';
-//import { UpdateEventComponent } from './pages/admin/update-event/update-event.component';
+import { UpdateEventComponent } from './pages/admin/update-event/update-event.component';
 import { EventFormComponent } from './pages/admin/event-form/event-form.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import {
@@ -46,6 +46,7 @@ import { DisplayClientsComponent } from './display-clients/display-clients.compo
 import { CounselorsComponent } from './pages/counselors/counselors.component';
 import { LoginComponent } from './login/login.component';
 import {NeedAuthGuard} from './auth.guard';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import {NeedAuthGuard} from './auth.guard';
     CallbackComponent,
     LoadingComponent,
    // CreateEventComponent,
-   // UpdateEventComponent,
+    UpdateEventComponent,
     EventFormComponent,
    EventCreateComponent,
    CalendarComponent,
@@ -68,6 +69,7 @@ import {NeedAuthGuard} from './auth.guard';
   ],
   imports: [
     BrowserModule,
+	NgxPaginationModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

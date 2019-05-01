@@ -1,7 +1,9 @@
 <!-- src/app/header/header.component.html -->
 <header id="header" class="header">
   <div class="header-page bg-primary">
+  <div *ngIf="auth.loggedIn">
     <a class="toggle-offcanvas bg-primary" (click)="toggleNav()"><span></span></a>
+  </div>
     <h1 class="header-page-siteTitle">
       <a routerLink="/">Man 100</a>
     </h1>
@@ -19,6 +21,7 @@
 	
   </div>
 
+ 
   <nav id="nav" class="nav" role="navigation">
     <ul class="nav-list">
      
@@ -52,4 +55,5 @@
       </li>
     </ul>
   </nav>
+ 
 </header>

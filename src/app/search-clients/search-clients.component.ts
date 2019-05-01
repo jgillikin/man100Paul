@@ -20,6 +20,10 @@ filteredUsers: Observable<IUserResponse>;
 event1: Event;
 errorMessage: String;
 categories = [];
+public placeholder: string = 'Enter Client Phone Number';
+public keyword = 'name';
+public historyHeading: string = 'Recently selected';
+public countriesTemplate = [];
 
   constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder) { }
 

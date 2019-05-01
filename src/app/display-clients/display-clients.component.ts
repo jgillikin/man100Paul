@@ -30,6 +30,7 @@ sender = [];
 id: number;
 private sub: any;
 client: String;
+p: any;
 
 
   constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder,public route: ActivatedRoute) {
